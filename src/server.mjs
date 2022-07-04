@@ -1,17 +1,17 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import express from 'express';
-import session from 'express-session';
-import flash from 'express-flash';
-import passport from 'passport';
-import mongoose from 'mongoose';
+import compression from 'compression';
 import MongoStore from 'connect-mongodb-session';
+import express from 'express';
+import flash from 'express-flash';
+import session from 'express-session';
+import methodOverride from 'method-override';
+import mongoose from 'mongoose';
+import passport from 'passport';
 import * as AppInfo from '../package.json' assert { type: 'json' };
 import './modules/strategy.mjs';
-import methodOverride from 'method-override';
 import userRouter from './routes/user.mjs';
-import compression from 'compression';
 
 class Application {
   app = express();
