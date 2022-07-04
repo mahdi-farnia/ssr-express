@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <%- include("./include/header") %>
+    <link rel="stylesheet" href="/assets/login.css" />
     <title>Express SSR Application | Login</title>
   </head>
   <body class="w-screen h-screen flex items-center justify-center">
     <legend class="p-3 max-w-2xl w-full border border-solid border-slate-200 rounded">
-      <% if (messages.error) { %>
+      <% if (locals.messages?.error) { %>
       <pre class="text-red-500 font-semibold my-3"><%= messages.error %></pre>
       <% } %>
       <form action="/user/login" method="post" class="grid grid-cols-2 gap-x-2 gap-y-5">
