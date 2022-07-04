@@ -3,4 +3,5 @@ node_modules
 .DS_Store
 yarn.lock
 # tailwind build file
-public/styles/global.css
+public/*
+!public/vectors
