@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "exports": "./src/server.mjs",
   "scripts": {
-    "dev": "concurrently \"nodemon src/server.mjs\" \"rollup -c -w\"",
+    "dev:server": "nodemon src/server.mjs",
+    "dev:ui": "concurrently \"npm run standalone-ejs\" \"rollup -c -w\"",
     "start": "node src/server.mjs",
     "build": "rollup -c",
-    "database": "node scripts/database.mjs"
+    "database": "node scripts/database.mjs",
+    "standalone-ejs": "node scripts/standalone-ejs.mjs"
   },
   "type": "module",
   "license": "MIT",
@@ -50,6 +52,7 @@
     "ignore": [
       "public/**/*.js",
       "app/**/*.js",
+      "scripts/**/*.{js,mjs}",
       "*.config.{js,cjs}"
     ],
     "delay": 2500
