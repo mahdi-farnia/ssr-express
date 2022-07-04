@@ -2,32 +2,12 @@
 <html lang="en">
   <head>
     <%- include("./include/header") %>
-    <link rel="stylesheet" href="/styles/particle.css" />
+    <link rel="stylesheet" href="/styles/register.css" />
     <title>Express SSR Application | Register</title>
   </head>
   <body class="bg-system-light dark:bg-system-dark dark:text-white">
     <main class="w-full h-screen flex items-stretch justify-center">
-      <section class="hidden lg:block flex-1">
-        <%- include("./include/registerSlider") %>
-      </section>
-      <section class="w-full lg:w-[40%] relative overflow-hidden">
-        <header class="flex flex-col-reverse items-center justify-center my-10">
-          <h1 class="text-2xl mt-4 txt-shadow">Sign in To Desktop Web</h1>
-          <div class="w-14 h-14">
-            <img
-              class="w-full h-full rounded-[50%] object-contain border-4 border-solid border-zinc-300"
-              src="https://i.picsum.photos/id/1060/50/50.jpg?hmac=9CWCRARUFHJLeZqNqVch2VePdMdMUg28MpU20zC8_uA"
-              alt="Logo"
-            />
-          </div>
-        </header>
-        <h1 class="hidden">Sign in Form</h1>
-        <div class="w-2/5 flex items-stretch justify-between mx-auto mb-8">
-          <a href="/user/login" class="p-2 no-underline text-inherit">Login</a>
-          <span class="p-2 border-b-2 border-system-blue border-solid">Register</span>
-        </div>
-        <%- include("./include/registerForm") %> <%- include("./include/formParticles") %>
-      </section>
+      <%- include("./include/registerForm") %> <%- include("./include/registerSlider") %>
     </main>
     <script>
       ((on) => {

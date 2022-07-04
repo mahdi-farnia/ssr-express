@@ -10,113 +10,131 @@ err.path === "username")?.message; locals.ageErr = locals.messages.error.find(er
 "passConfirm")?.message; locals.agreementErr = locals.messages.error.find(err => err.path ===
 "agreement")?.message; } %>
 
-<form action="/user/register" method="post" class="max-w-sm w-full mx-auto px-2">
-  <div class="mb-8 relative flex items-stretch justify-center">
-    <div class="flex-1 min-w-[160px] relative <%= locals.shadowClassName %>">
-      <% if (locals.usernameErr) { %>
-      <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.usernameErr %></div>
+<section class="w-full lg:w-[40%] relative overflow-hidden">
+  <header class="flex flex-col-reverse items-center justify-center my-10">
+    <h1 class="text-2xl mt-4 txt-shadow">Sign in To Desktop Web</h1>
+    <div class="w-14 h-14">
+      <img
+        class="w-full h-full rounded-[50%] object-contain border-4 border-solid border-zinc-300"
+        src="https://i.picsum.photos/id/1060/50/50.jpg?hmac=9CWCRARUFHJLeZqNqVch2VePdMdMUg28MpU20zC8_uA"
+        alt="Logo"
+      />
+    </div>
+  </header>
+  <h1 class="hidden">Sign in Form</h1>
+  <div class="w-2/5 flex items-stretch justify-between mx-auto mb-8">
+    <a href="/user/login" class="p-2 no-underline text-inherit">Login</a>
+    <span class="p-2 border-b-2 border-system-blue border-solid">Register</span>
+  </div>
+  <form action="/user/register" method="post" class="max-w-sm w-full mx-auto px-2">
+    <div class="mb-8 relative flex items-stretch justify-center">
+      <div class="flex-1 min-w-[160px] relative <%= locals.shadowClassName %>">
+        <% if (locals.usernameErr) { %>
+        <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.usernameErr %></div>
+        <% } %>
+        <span class="icon person-ico absolute left-1"></span>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          autocomplete="off"
+          required
+          class="<%= locals.inputClassName %>"
+          tabindex="1"
+          minlength="4"
+          maxlength="25"
+        />
+      </div>
+      <span class="w-2"></span>
+      <div class="relative w-full max-w-[128px] <%= locals.shadowClassName %>">
+        <% if (locals.age) { %>
+        <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.age %></div>
+        <% } %>
+        <span class="icon calendar-ico absolute left-1"></span>
+        <input
+          type="number"
+          inputmode="numeric"
+          name="age"
+          id="age"
+          placeholder="Age"
+          required
+          class="<%= locals.inputClassName %>"
+          min="0"
+          max="99"
+          tabindex="2"
+        />
+      </div>
+    </div>
+    <div class="mb-8 relative <%= locals.shadowClassName %>">
+      <% if(locals.passwordErr) { %>
+      <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.passwordErr %></div>
       <% } %>
-      <span class="icon person-ico absolute left-1"></span>
+      <button
+        type="button"
+        data-id="showPassword"
+        title="Toggle view password"
+        class="w-[30px] h-full absolute left-0 px-[6px]"
+        tabindex="6"
+      >
+        <span class="icon eye-ico"></span>
+      </button>
       <input
-        type="text"
-        name="username"
-        id="username"
-        placeholder="Username"
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
         autocomplete="off"
         required
         class="<%= locals.inputClassName %>"
-        tabindex="1"
+        tabindex="3"
         minlength="4"
-        maxlength="25"
       />
     </div>
-    <span class="w-2"></span>
-    <div class="relative w-full max-w-[128px] <%= locals.shadowClassName %>">
-      <% if (locals.age) { %>
-      <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.age %></div>
-      <% } %>
-      <span class="icon calendar-ico absolute left-1"></span>
+    <div class="mb-8 relative <%= locals.shadowClassName %>">
+      <%if(locals.passConfirmErr){%>
+      <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.passConfirmErr %></div>
+      <%}%>
+      <button
+        type="button"
+        data-id="showPassword"
+        title="Toggle view password"
+        class="w-[30px] h-full absolute left-0 px-[6px]"
+        tabindex="7"
+      >
+        <span class="icon eye-ico"></span>
+      </button>
       <input
-        type="number"
-        inputmode="numeric"
-        name="age"
-        id="age"
-        placeholder="Age"
+        type="password"
+        name="passConfirm"
+        id="passConfirm"
+        placeholder="Confirm Password"
+        autocomplete="off"
         required
         class="<%= locals.inputClassName %>"
-        min="0"
-        max="99"
-        tabindex="2"
+        tabindex="4"
+        minlength="4"
       />
     </div>
-  </div>
-  <div class="mb-8 relative <%= locals.shadowClassName %>">
-    <% if(locals.passwordErr) { %>
-    <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.passwordErr %></div>
-    <% } %>
-    <button
-      type="button"
-      data-id="showPassword"
-      title="Toggle view password"
-      class="w-[30px] h-full absolute left-0 px-[6px]"
-      tabindex="6"
-    >
-      <span class="icon eye-ico"></span>
-    </button>
-    <input
-      type="password"
-      name="password"
-      id="password"
-      placeholder="Password"
-      autocomplete="off"
-      required
-      class="<%= locals.inputClassName %>"
-      tabindex="3"
-      minlength="4"
-    />
-  </div>
-  <div class="mb-8 relative <%= locals.shadowClassName %>">
-    <%if(locals.passConfirmErr){%>
-    <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.passConfirmErr %></div>
-    <%}%>
-    <button
-      type="button"
-      data-id="showPassword"
-      title="Toggle view password"
-      class="w-[30px] h-full absolute left-0 px-[6px]"
-      tabindex="7"
-    >
-      <span class="icon eye-ico"></span>
-    </button>
-    <input
-      type="password"
-      name="passConfirm"
-      id="passConfirm"
-      placeholder="Confirm Password"
-      autocomplete="off"
-      required
-      class="<%= locals.inputClassName %>"
-      tabindex="4"
-      minlength="4"
-    />
-  </div>
-  <div class="mb-8 flex items-center relative">
-    <%if(locals.agreementErr) {%>
-    <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.agreementErr %></div>
-    <%}%>
-    <input type="checkbox" name="agreement" id="agreement" class="mr-2" tabindex="5" />
-    <label for="agreement" class="cursor-pointer select-none">
-      I'm agree with <a href="/terms" target="_blank" rel="noopener noreferrer">Terms</a>
-    </label>
-  </div>
-  <div class="w-max mx-auto">
-    <button
-      type="submit"
-      class="flex items-center border-2 border-emerald-300 dark:border-emerald-500 bg-emerald-200 dark:bg-emerald-200 pr-4 pl-2 py-2 text-sm rounded-md shadow-lg dark:shadow-black transition-shadow duration-200 active:shadow-sm text-emerald-900"
-      tabindex="8"
-    >
-      <span class="icon tick-ico mr-1"></span>
-      Register
-    </button>
-  </div>
-</form>
+    <div class="mb-8 flex items-center relative">
+      <%if(locals.agreementErr) {%>
+      <div class="text-red-400 text-xs absolute bottom-full">* <%= locals.agreementErr %></div>
+      <%}%>
+      <input type="checkbox" name="agreement" id="agreement" class="mr-2" tabindex="5" />
+      <label for="agreement" class="cursor-pointer select-none">
+        I'm agree with <a href="/terms" target="_blank" rel="noopener noreferrer">Terms</a>
+      </label>
+    </div>
+    <div class="w-max mx-auto">
+      <button
+        type="submit"
+        class="flex items-center border-2 border-emerald-300 dark:border-emerald-500 bg-emerald-200 dark:bg-emerald-200 pr-4 pl-2 py-2 text-sm rounded-md shadow-lg dark:shadow-black transition-shadow duration-200 active:shadow-sm text-emerald-900"
+        tabindex="8"
+      >
+        <span class="icon tick-ico mr-1"></span>
+        Register
+      </button>
+    </div>
+  </form>
+  <%- include("./formParticles") %>
+</section>
