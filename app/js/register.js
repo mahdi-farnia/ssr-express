@@ -1,9 +1,8 @@
 import '../styles/global.css';
 import '../styles/register.css';
+import { on } from './utils/event';
 
-const on = (el, ev, handler) => el.addEventListener(ev, handler);
-
-// Age form control
+// Age form control ===================
 const ageInput = document.getElementById('age');
 on(ageInput, 'keydown', (e) => {
   if (!isNaN(e.key)) {
