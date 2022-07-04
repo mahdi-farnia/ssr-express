@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+input,
+button {
+  font-family: 'SF Pro Display', Montserrat, 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  a {
+    @apply underline text-system-blue;
+  }
+
+  input[type='checkbox'] {
+    @apply w-4 h-4 text-blue-600 bg-gray-100 rounded-sm border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600;
+  }
+
+  button {
+    @apply select-none;
+  }
+}
+
+.icon {
+  @apply w-full h-full block bg-no-repeat bg-contain bg-center pointer-events-none select-none;
+}
+
+.person-ico {
+  @apply w-6 h-full;
+  background-image: url('/vectors/person.svg');
+}
+
+.tick-ico {
+  @apply w-5 h-5;
+  background-image: url('/vectors/tick.svg');
+}
+
+.eye-ico {
+  background-image: url('/vectors/eye.svg');
+}
+
+.calendar-ico {
+  @apply w-6 h-full;
+  background-image: url('/vectors/calendar.svg');
+}
+
+.txt-shadow {
+  --shadow-color: #666;
+  text-shadow: 0 0 5px var(--shadow-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .txt-shadow {
+    --shadow-color: #000;
+  }
+}
