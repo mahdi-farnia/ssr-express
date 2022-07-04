@@ -60,6 +60,6 @@ function automaticLogin(req, res, next) {
   next();
 }
 
-router.use((_, res) => res.render('404'));
+router.use((_, res) => res.status(404).render('404'));
 
 export default router;

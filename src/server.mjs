@@ -84,7 +84,7 @@ class Application {
       res.render('index', { userInfo: req.user })
     );
     app.use('/user', userRouter);
-    app.use((_, res) => res.render('404'));
+    app.use((_, res) => res.status(404).render('404'));
   }
 
   static validateBeforeContinue(req, res, next) {
