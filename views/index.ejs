@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./include/header") %>
+    <title>Express SSR Application | Home</title>
+  </head>
+  <body>
+    <% console.log(userInfo) %>
+    <p class="font-bold text-teal-500">hello world</p>
+    <form action="/user/logout?real-method=DELETE" method="post">
+      <button type="submit">Logout</button>
+    </form>
+  </body>
+</html>

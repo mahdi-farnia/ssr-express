@@ -1,0 +1,63 @@
+.particle {
+  --p-bg-color: rgb(110, 231, 183);
+  background-color: var(--p-bg-color);
+  position: absolute;
+  z-index: -1;
+  box-shadow: 0 0 25px -5px var(--p-bg-color);
+}
+
+.p-half-circle {
+  --p-width: 100px;
+  --p-height: 50px;
+  width: var(--p-width);
+  height: var(--p-height);
+  border-radius: 0 0 var(--p-height) var(--p-height);
+}
+
+@media all and (min-width: 412px) {
+  .p-half-circle {
+    --p-width: 160px;
+    --p-height: 80px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .particle {
+    --p-bg-color: rgb(52, 211, 153);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .particle:nth-of-type(2n) {
+    will-change: transform;
+    animation: floating-circles 5s linear infinite;
+  }
+
+  .particle:nth-of-type(2n + 1) {
+    will-change: transform;
+    animation: floating-circles 10s linear reverse infinite;
+  }
+}
+
+@keyframes floating-circles {
+  0%,
+  100% {
+    transform: translate(0) rotate(var(--tw-rotate, 0));
+  }
+
+  20% {
+    transform: translate(8px, -5px) rotate(var(--tw-rotate, 0));
+  }
+
+  40% {
+    transform: translate(-2px, 1px) rotate(var(--tw-rotate, 0));
+  }
+
+  60% {
+    transform: translate(-7px, -8px) rotate(var(--tw-rotate, 0));
+  }
+
+  80% {
+    transform: translate(-10px, 10px) rotate(var(--tw-rotate, 0));
+  }
+}
