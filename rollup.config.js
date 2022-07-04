@@ -22,6 +22,9 @@ export default ['register', 'login'].map((filename) =>
         extract: true
       }),
       isDev && terser()
-    ]
+    ],
+    watch: {
+      include: ['app']
+    }
   })
 );
