@@ -4,7 +4,7 @@
   "exports": "./src/server.mjs",
   "scripts": {
     "dev:server": "nodemon src/server.mjs",
-    "dev:ui": "concurrently \"npm run standalone-ejs\" \"rollup -c -w\"",
+    "dev:ui": "concurrently \"npm run standalone-ejs\" \"webpack\"",
     "start": "node src/server.mjs",
     "build": "rollup -c",
     "database": "node scripts/database.mjs",
@@ -29,8 +29,6 @@
     "zod": "^3.17.3"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.1",
-    "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/bcrypt": "^5.0.0",
     "@types/compression": "^1.7.2",
     "@types/express": "^4.17.13",
@@ -40,14 +38,15 @@
     "@types/passport-local": "^1.0.34",
     "autoprefixer": "^10.4.7",
     "concurrently": "^7.2.2",
+    "css-loader": "^6.7.1",
     "log-update": "^5.0.1",
+    "mini-css-extract-plugin": "^2.6.1",
     "nodemon": "^2.0.18",
     "postcss": "^8.4.14",
-    "rollup": "^2.75.7",
-    "rollup-plugin-inject-process-env": "^1.3.1",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "tailwindcss": "^3.1.4"
+    "postcss-loader": "^7.0.0",
+    "tailwindcss": "^3.1.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
   },
   "nodemonConfig": {
     "ignore": [
