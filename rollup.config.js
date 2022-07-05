@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
+import injectProcessEnv from 'rollup-plugin-inject-process-env';
 import { defineConfig } from 'rollup';
 import { terser } from 'rollup-plugin-terser';
 
@@ -17,6 +18,9 @@ export default ['register', 'login'].map((filename) =>
     plugins: [
       nodeResolve({ browser: true }),
       commonjs({ sourceMap: false }),
+      injectProcessEnv({
+        NODE_ENV: isDev ? 'development' : 'production'
+      }),
       postcss({
         minimize: !isDev,
         extract: true
