@@ -1,7 +1,7 @@
 const path = require('node:path');
 const CSSPlugin = require('mini-css-extract-plugin');
 
-const isDev = true;
+const isDev = process.env.NODE_ENV !== 'production';
 
 module.exports = ['login', 'register'].map((file) => ({
   name: file,
