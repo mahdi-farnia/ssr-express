@@ -38,5 +38,6 @@ module.exports = ['login', 'register'].map((file) => ({
         ]
       }
     ]
-  }
+  },
+  stats: 'errors-warnings'
 }));
