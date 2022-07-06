@@ -14,9 +14,7 @@ module.exports = ['login', 'register'].map((file) => ({
   devtool: isDev ? 'inline-source-map' : false,
   watch: true,
   watchOptions: {
-    ignored: ['node_modules', 'public', 'scripts', 'src', 'views', 'tailwind.config.cjs'].map((p) =>
-      resolve(p)
-    )
+    ignored: ['node_modules', 'public', 'scripts', 'src'].map((p) => resolve(p))
   },
   resolve: {
     extensions: ['.js', '.mjs']
