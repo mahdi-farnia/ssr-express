@@ -1,3 +1,4 @@
+/* #region ================== Particles ================== */
 .particle {
   --p-bg-color: rgb(110, 231, 183);
   background-color: var(--p-bg-color);
@@ -61,3 +62,149 @@
     transform: translate(-10px, 10px) rotate(var(--tw-rotate, 0));
   }
 }
+/* #endregion */
+/* #region ================== Slides ================== */
+.slide {
+  --s-bg-color: #fff;
+  width: 100%;
+  height: 100%;
+  background-color: var(--s-bg-color);
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+#slides.move-forward .slide:nth-of-type(1) {
+  animation: slide1_fade-forward 0.4s ease forwards;
+}
+@keyframes slide1_fade-forward {
+  100% {
+    opacity: 0.5;
+    transform: translateY(-2rem) scale(0.9);
+  }
+}
+#slides.move-forward .slide:nth-of-type(2) {
+  animation: slide2_fade-forward 0.4s ease forwards;
+}
+@keyframes slide2_fade-forward {
+  100% {
+    transform: translateY(-1rem) scale(0.95);
+  }
+}
+#slides.move-forward .slide:nth-of-type(3) {
+  animation: slide3_fade-forward 0.4s ease forwards;
+}
+@keyframes slide3_fade-forward {
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+#slides.move-forward .slide:nth-of-type(4),
+#slides.move-backward .slide:nth-of-type(4) {
+  visibility: hidden;
+}
+#slides.move-forward .slide:nth-of-type(5) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: slide5_fade-forward 0.4s ease forwards;
+}
+@keyframes slide5_fade-forward {
+  100% {
+    opacity: 0;
+    transform: translateY(1rem) scale(1.05);
+  }
+}
+
+#slides.move-backward .slide:nth-of-type(1) {
+  animation: slide1_fade-backward 0.4s ease forwards;
+}
+@keyframe slide1_fade-backward {
+  0% {
+    opacity: 0.5;
+    transform: translateY(-2rem) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-3rem) scale(0.85);
+  }
+}
+#slides.move-backward .slide:nth-of-type(2) {
+  animation: slide2_fade-backward 0.4s ease forwards;
+}
+@keyframe slide2_fade-backward {
+  0% {
+    transform: translateY(-1rem) scale(0.95);
+  }
+  100% {
+    transform: translateY(-2rem) scale(0.9);
+  }
+}
+#slides.move-backward .slide:nth-of-type(3) {
+  animation: slide3_fade-backward 0.4s ease forwards;
+}
+@keyframe slide3_fade-backward {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-1rem) scale(0.95);
+  }
+}
+#slides.move-backward .slide:nth-of-type(5) {
+  animation: slide5_fade-backward 0.4s ease forwards;
+}
+@keyframe slide5_fade-backward {
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dot {
+  --d-border-color: #fff;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: var(--d-border-color);
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.on {
+  --d-border-color: rgb(19, 78, 74);
+  background-color: var(--d-border-color);
+}
+
+.first-to-last {
+  /* animate first desc to second one */
+}
+
+.last-to-first {
+  /* animate second desc to first one */
+}
+
+@media (prefers-color-scheme: dark) {
+  .slide {
+    -s-bg-color: #000;
+  }
+
+  .dot {
+    --d-border-color: #000;
+  }
+
+  .dot.on {
+    --d-border-color: rgb(153, 246, 228);
+  }
+}
+
+/* #endregion */

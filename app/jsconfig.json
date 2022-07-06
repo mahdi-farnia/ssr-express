@@ -1,0 +1,6 @@
+{
+  "extends": "../src/jsconfig.json",
+  "compilerOptions": {
+    "lib": ["esnext", "dom", "dom.iterable"]
+  }
+}
