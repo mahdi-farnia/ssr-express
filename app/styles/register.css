@@ -116,7 +116,8 @@
     transform: translateY(1rem) scale(1.05);
   }
 }
-
+/* not working At ALL idk why. keep it for reference... */
+/* 
 #slides.move-backward .slide:nth-of-type(1) {
   animation: slide1_fade-backward 0.4s ease forwards;
 }
@@ -161,7 +162,7 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-}
+} */
 
 .slide-img {
   width: 100%;
