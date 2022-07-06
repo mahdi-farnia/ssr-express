@@ -1,1 +1,55 @@
-/* empty for future... (may be) */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+.glass-container {
+  @apply w-full p-2 backdrop-blur-md rounded-lg mb-5 bg-emerald-400
+  lg:bg-transparent lg:backdrop-blur-none lg:rounded-none lg:border-none;
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-input {
+  @apply w-full text-base rounded-md text-gray-400 focus:text-black
+  dark:focus:text-white;
+  background-color: var(--glass-bg);
+  padding: 6px;
+}
+
+.glass-input::placeholder {
+  @apply text-gray-400;
+}
+
+.input-label {
+  @apply block mb-2 text-lg text-center;
+}
+
+.show-btn {
+  @apply h-full absolute top-0 right-0 rounded-md;
+  width: 35px;
+  background-color: var(--glass-bg);
+  padding: 6px;
+}
+
+.show-btn .icon {
+  --brightness: 0.3;
+  filter: brightness(var(--brightness));
+}
+
+.glass-btn {
+  @apply backdrop-blur-md rounded-md font-medium text-base py-2 px-4;
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-bg: rgba(0, 0, 0, 0.5);
+    --glass-border: rgba(0, 0, 0, 0.3);
+  }
+
+  .show-btn .icon {
+    --brightness: 1.3;
+  }
+}

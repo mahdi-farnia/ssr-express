@@ -1,3 +1,4 @@
+/* TODO rewrite all wil tailwind @apply */
 /* #region ================== Particles ================== */
 .particle {
   --p-bg-color: rgb(110, 231, 183);
