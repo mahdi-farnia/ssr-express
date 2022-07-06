@@ -49,7 +49,8 @@ on(ageInput, 'keydown', (e) => {
   }
 });
 on(ageInput, 'blur', () => {
-  ageInput.value = parseInt(ageInput.value);
+  let val;
+  if ((val = ageInput.value)) ageInput.value = parseInt(ageInput.value);
 });
 
 // Show Password =====================

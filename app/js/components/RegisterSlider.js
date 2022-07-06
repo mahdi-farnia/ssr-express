@@ -10,12 +10,12 @@ import MQLifeCycle from './MQLifeCycle.js';
 
 class Slider extends MQLifeCycle {
   /** @param {ISlideInfo[]} infos */
-  constructor(infos) {
-    super('(min-width: 1024px)', infos);
+  constructor(infos, initPos) {
+    super('(min-width: 1024px)', infos, initPos);
   }
 
   /** @override @param {ISlideInfo[]} infos */
-  init(infos) {
+  init(infos, initPos) {
     super.init();
 
     const slidesContainer = document.getElementById('slides'),
@@ -24,7 +24,7 @@ class Slider extends MQLifeCycle {
       [first, last] = descContainer.querySelectorAll('span');
 
     this.slides = [];
-    this.pos = 3;
+    this.pos = initPos || 0;
     this.elements = {
       slides: { container: slidesContainer, pre, main, post },
       description: { container: descContainer, first, last },
@@ -47,7 +47,8 @@ class Slider extends MQLifeCycle {
       slide = this.slides[this.pos];
     // place first image to DOM
     setChildren(elements.slides.main, [slide]);
-    elements.description.first.textContent = slide.alt;
+    elements.description.container.classList.add('first-to-last');
+    this.changeDescription(slide.alt);
   }
 
   /** @private */
@@ -68,8 +69,8 @@ class Slider extends MQLifeCycle {
 
   /** @private */
   registerListeners() {
-    this.onEvent(document.getElementById('slide-next'), () => this.moveSlide(1));
-    this.onEvent(document.getElementById('slide-prev'), () => this.moveSlide(-1));
+    this.onEvent(document.getElementById('slide-next'), 'click', () => this.moveSlide(1));
+    this.onEvent(document.getElementById('slide-prev'), 'click', () => this.moveSlide(-1));
   }
 
   moveSlide(delta) {
@@ -79,31 +80,32 @@ class Slider extends MQLifeCycle {
     this.elements.dots[lastPos].classList.remove('on');
     this.elements.dots[this.modifyPosition(delta)].classList.add('on');
 
-    this.animate(lastPos, delta > 0);
+    this.animate(lastPos /**, delta > 0 */);
   }
 
   /** @private */
-  async animate(lastPos, isForwardAnimation) {
+  async animate(lastPos /**isForwardAnimation*/) {
     const { container, post, pre, main } = this.elements.slides,
       prevSlide = this.slides[lastPos],
       nextSlide = this.slides[this.pos];
-    let clsName = '';
+    // let clsName = '';
 
-    if (isForwardAnimation) {
-      setChildren(post, [prevSlide]);
-      setChildren(pre, [nextSlide]);
-      clsName = 'move-forward';
-    } else {
-      setChildren(post, [nextSlide]);
-      setChildren(pre, [prevSlide]);
-      clsName = 'move-backward';
-    }
+    // NOTE backward animation not working, keep these for reference
+    // if (isForwardAnimation) {
+    setChildren(post, [prevSlide]);
+    setChildren(pre, [nextSlide]);
+    // clsName = 'move-forward';
+    // } else {
+    // setChildren(post, [nextSlide]);
+    // setChildren(pre, [prevSlide]);
+    // clsName = 'move-backward';111
+    // }
 
-    container.classList.add(clsName);
+    container.classList.add('move-forward');
     this.changeDescription(nextSlide.alt);
     await once(post, 'animationend'); // NOTE all animations have same duration
     setChildren(main, [nextSlide]);
-    container.classList.remove(clsName);
+    container.classList.remove('move-forward');
 
     pre.innerHTML = post.innerHTML = '';
   }
