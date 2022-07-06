@@ -68,8 +68,8 @@ class Slider extends MQLifeCycle {
 
   /** @private */
   registerListeners() {
-    this.onEvent(document.getElementById('slide-next'), () => this.moveSlide(1));
-    this.onEvent(document.getElementById('slide-prev'), () => this.moveSlide(-1));
+    this.onEvent(document.getElementById('slide-next'), 'click', () => this.moveSlide(1));
+    this.onEvent(document.getElementById('slide-prev'), 'click', () => this.moveSlide(-1));
   }
 
   moveSlide(delta) {
@@ -79,32 +79,32 @@ class Slider extends MQLifeCycle {
     this.elements.dots[lastPos].classList.remove('on');
     this.elements.dots[this.modifyPosition(delta)].classList.add('on');
 
-    this.animate(lastPos/**, delta > 0 */);
+    this.animate(lastPos /**, delta > 0 */);
   }
 
   /** @private */
-  async animate(lastPos, /**isForwardAnimation*/) {
+  async animate(lastPos /**isForwardAnimation*/) {
     const { container, post, pre, main } = this.elements.slides,
       prevSlide = this.slides[lastPos],
       nextSlide = this.slides[this.pos];
-      // let clsName = '';
+    // let clsName = '';
 
-      // NOTE backward animation not working, keep these for reference
+    // NOTE backward animation not working, keep these for reference
     // if (isForwardAnimation) {
-      setChildren(post, [prevSlide]);
-      setChildren(pre, [nextSlide]);
+    setChildren(post, [prevSlide]);
+    setChildren(pre, [nextSlide]);
     // clsName = 'move-forward';
     // } else {
-      // setChildren(post, [nextSlide]);
-      // setChildren(pre, [prevSlide]);
+    // setChildren(post, [nextSlide]);
+    // setChildren(pre, [prevSlide]);
     // clsName = 'move-backward';111
     // }
 
-    container.classList.add("move-forward");
+    container.classList.add('move-forward');
     this.changeDescription(nextSlide.alt);
     await once(post, 'animationend'); // NOTE all animations have same duration
     setChildren(main, [nextSlide]);
-    container.classList.remove("move-forward");
+    container.classList.remove('move-forward');
 
     pre.innerHTML = post.innerHTML = '';
   }
