@@ -10,12 +10,12 @@ import MQLifeCycle from './MQLifeCycle.js';
 
 class Slider extends MQLifeCycle {
   /** @param {ISlideInfo[]} infos */
-  constructor(infos) {
-    super('(min-width: 1024px)', infos);
+  constructor(infos, initPos) {
+    super('(min-width: 1024px)', infos, initPos);
   }
 
   /** @override @param {ISlideInfo[]} infos */
-  init(infos) {
+  init(infos, initPos) {
     super.init();
 
     const slidesContainer = document.getElementById('slides'),
@@ -24,7 +24,7 @@ class Slider extends MQLifeCycle {
       [first, last] = descContainer.querySelectorAll('span');
 
     this.slides = [];
-    this.pos = 3;
+    this.pos = initPos || 0;
     this.elements = {
       slides: { container: slidesContainer, pre, main, post },
       description: { container: descContainer, first, last },
@@ -47,7 +47,8 @@ class Slider extends MQLifeCycle {
       slide = this.slides[this.pos];
     // place first image to DOM
     setChildren(elements.slides.main, [slide]);
-    elements.description.first.textContent = slide.alt;
+    elements.description.container.classList.add('first-to-last');
+    this.changeDescription(slide.alt);
   }
 
   /** @private */

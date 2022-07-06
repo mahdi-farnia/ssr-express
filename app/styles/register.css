@@ -186,12 +186,18 @@
   background-color: var(--d-border-color);
 }
 
-.first-to-last {
-  /* animate first desc to second one */
+.first-to-last span:nth-of-type(1) {
+  opacity: 0;
+}
+.first-to-last span:nth-of-type(2) {
+  opacity: 1;
 }
 
-.last-to-first {
-  /* animate second desc to first one */
+.last-to-first span:nth-of-type(1) {
+  opacity: 1;
+}
+.last-to-first span:nth-of-type(2) {
+  opacity: 0;
 }
 
 @media (prefers-color-scheme: dark) {
