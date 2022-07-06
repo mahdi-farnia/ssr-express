@@ -3,38 +3,12 @@
   <head>
     <%- include("./include/header") %>
     <link rel="stylesheet" href="/assets/login.css" />
+    <script src="/lib/three.min.js"></script>
+    <script src="/lib/vanta.waves.min.js"></script>
     <title>Express SSR Application | Login</title>
   </head>
-  <body class="w-screen h-screen flex items-center justify-center">
-    <legend class="p-3 max-w-2xl w-full border border-solid border-slate-200 rounded">
-      <% if (locals.messages?.error) { %>
-      <pre class="text-red-500 font-semibold my-3"><%= messages.error %></pre>
-      <% } %>
-      <form action="/user/login" method="post" class="grid grid-cols-2 gap-x-2 gap-y-5">
-        <input
-          type="text"
-          name="username"
-          id="username"
-          autocomplete="off"
-          placeholder="Username"
-          class="border-b border-slate-400 border-solid p-1 text-center"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          autocomplete="off"
-          placeholder="Password"
-          class="border-b border-slate-400 border-solid p-1 text-center"
-          required
-        />
-        <button type="submit" class="bg-emerald-200 py-2 rounded-md col-span-2">Login</button>
-      </form>
-      <a href="/user/register" class="mt-2 text-blue-800 text-center block"
-        >Did not registered yet?</a
-      >
-    </legend>
+  <body>
+    <main class="w-full h-screen" id="root"></main>
     <script src="/assets/login.js"></script>
   </body>
 </html>
